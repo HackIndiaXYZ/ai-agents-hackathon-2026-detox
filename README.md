@@ -1,166 +1,370 @@
-# 🏥 AYUVANT — AI-Powered Smart Pharmacy & Healthcare Supply Ecosystem
+<![CDATA[# 🏥 AYUVANT — AI-Powered Smart Pharmacy & Healthcare Supply Ecosystem
 
-Welcome to the official repository for team **DETOX** at the **HackIndia AI Agents Hackathon 2026**.
-
-## 🚀 What is AYUVANT?
-**AYUVANT** is an AI-powered smart pharmacy and decentralized healthcare supply chain ecosystem. 
-
-## 🛠️ What Does It Do & What Have We Built?
-In this repository, we have built a **fully functional, interactive client-side dashboard system** divided into three progressive parts, backed by local data compilers:
-1. **Core Operations (Part 1)**: A day-to-day pharmacy inventory manager and sales logger.
-2. **AI & Geospatial Intelligence (Part 2)**: An offline, self-improving Machine Learning (ML) prediction model that forecasts medicine shortages locally in the browser, mapped to a 2km × 2km grid zone system, and an AI Q&A assistant.
-3. **P2P Distribution & Patient Tracker (Part 3)**: A collaborative network simulator that manages peer-to-peer stock transfers between nearby pharmacies, an active salt composition alternative recommender, a pharmacist feedback collector, and a profile-based patient timeline tracker with recovery trajectory alerts.
-4. **Master Dataset Compiler**: A Node.js compiler (`transform-dataset.js`) that takes a relational master pharmacy dataset and converts it into optimized Javascript clinical data layers to power the dashboard offline.
+> **Team DETOX** · HackIndia AI Agents Hackathon 2026
 
 ---
 
-## 🔮 Project Vision & Core Challenge
+## 💡 The Problem We Are Solving
 
-Traditional healthcare supply chains are reactive, leading to local medicine shortages (e.g., during seasonal disease outbreaks) or wasteful overstocking. 
+Every year in India, **thousands of patients** suffer because their local pharmacy ran out of a critical medicine — not because the medicine doesn't exist, but because **no one predicted the demand in time**.
 
-**AYUVANT** resolves this by introducing an **intelligent, agentic dashboard** for pharmacists and distributors that predicts demands before they occur, routes excess stock from nearby pharmacies, recommends therapeutically equivalent generic alternatives, and tracks individual patient recovery patterns.
+**The reality today:**
+- 🔴 A chemist in Zone A has 500 units of Azithromycin sitting idle, while a chemist 3 km away in Zone B has zero stock and patients waiting.
+- 🔴 Seasonal outbreaks (dengue, flu, COVID waves) spike medicine demand overnight — but pharmacies only realize *after* they run out.
+- 🔴 When a brand-name drug is unavailable, pharmacists have no quick way to find a therapeutically equivalent generic substitute with the same active salts.
+- 🔴 There is no system to track whether a patient's medicine purchases are escalating (e.g., moving from mild painkillers to heavy antibiotics) — an early warning sign of worsening health.
+
+**The root cause?** India's pharmacy supply chain is **reactive, siloed, and non-intelligent**. Each pharmacy operates as an isolated unit with no demand forecasting, no inter-pharmacy coordination, and no patient-level intelligence.
 
 ---
 
-## 📁 System Architecture & Directory Layout
+## ✅ Our Solution — AYUVANT
 
-```text
-ai-agents-hackathon-2026-detox/
-├── LICENSE                        # Open-source MIT License
-├── README.md                      # This main document
-├── pharmacy_master_dataset.json   # Full relational dataset (diseases, symptoms, meds, salts)
-├── build/                         # Dataset automation & parsing scripts
-│   └── transform-dataset.js       # Node.js script mapping dataset to clinical JS databases
-├── context/                       # In-depth product specification and design specifications
-│   ├── project-overview.md        # Core vision and module maps
-│   ├── design-system.md           # Tokens, palettes, typography guidelines
-│   ├── part1-core-platform/       # Specifications for Part 1 features
-│   │   ├── overview.md
-│   │   └── feature-batch-entry.md
-│   └── part2-ai-intelligence/     # Specifications for Part 2 AI & map features
-│       ├── overview.md
-│       ├── feature-ai-qa.md
-│       ├── feature-notifications.md
-│       └── feature-zone-map.md
-├── part1/                         # Part 1 Codebase (Core operations foundation)
-│   ├── index.html                 # UI layout for inventory & day-to-day CRUD
-│   ├── index.css                  # UI theme & layout styling
-│   └── app.js                     # CRUD logic & basic dashboard wiring
-├── part2/                         # Part 2 Codebase (AI forecasting & zone map)
-│   ├── index.html                 # Grid maps, AI Q&A panel, notification feeds
-│   ├── index.css                  # Custom styling for grids & news feeds
-│   └── app.js                     # Local ML prediction loop, self-improving logs, Q&A answers
-└── part3/                         # Part 3 Codebase (Network transfers & patient intelligence)
-    ├── index.html                 # 6-tab dashboard: Transfers, Alts, Feedback, Patients, Patterns, Insights
-    ├── index.css                  # Full component layouts & dynamic render class states
-    ├── app.js                     # System orchestrator, tab switching, and event binding
-    ├── data/                      # Auto-generated clinical databases
-    │   ├── clinical-intelligence.js
-    │   └── medicines.js
-    └── modules/                   # Decoupled domain models
-        ├── pharmacy-network.js    # Stock transfer routing & proximity algorithms
-        ├── alternatives.js        # Salt composition matching & price comparison engine
-        ├── feedback.js            # Pharmacist feedback analytics and AI learning updates
-        └── patient-tracker.js     # Patient registration, purchase timeline, & health trajectory flags
+**AYUVANT** is a complete, AI-powered pharmacy intelligence platform that transforms how medicines are managed, predicted, distributed, and tracked at the local level.
+
+### What AYUVANT Does (In Simple Terms):
+
+| Capability | What It Means |
+|------------|---------------|
+| 📦 **Manages Inventory** | Pharmacists add medicine batches with expiry dates, quantities, and dosage forms. The system tracks everything and alerts before stock runs low or expires. |
+| 🧠 **Predicts Shortages Before They Happen** | A local ML model learns from every sale — which medicine, which zone, which day, which month — and forecasts what will run out next week or next month. |
+| 🗺️ **Maps Demand by Geography** | The area around a pharmacy is divided into 2km × 2km grid zones. Each zone is color-coded by demand intensity so the pharmacist can see which neighborhoods need what. |
+| 📰 **Detects Outbreaks from News** | Monitors simulated news feeds, Google Trends, and government health bulletins. If dengue cases spike in a region, AYUVANT warns the pharmacist to stock up on relevant medicines. |
+| 🤖 **Answers Pharmacist Questions** | An AI Q&A assistant lets the pharmacist ask: *"Which medicine will I run out of?"*, *"Which zone needs what?"*, *"In how many days will I need to restock?"* — and gets data-driven answers. |
+| 🔄 **Transfers Stock Between Pharmacies** | If Pharmacy A has surplus and Pharmacy B has a shortage, AYUVANT recommends and tracks a peer-to-peer stock transfer with a full lifecycle (Requested → Approved → In Transit → Delivered). |
+| 💊 **Recommends Generic Alternatives** | When a brand-name drug is unavailable, AYUVANT finds alternatives with matching active salts, scores them on therapeutic equivalence (salt match, dosage form, strength, category), and compares prices. |
+| 📝 **Collects Pharmacist Feedback** | After every generic substitution, a 6-question structured form captures efficacy, patient concerns, price sensitivity, and pharmacist recommendation — feeding back into the AI to improve future suggestions. |
+| 👤 **Tracks Patient Health Over Time** | Patients are registered by mobile number. Every purchase builds a timeline. The system classifies their health trajectory as Improving / Stable / Concerning / Escalating and raises flags for dangerous patterns. |
+| 📊 **Generates Network-Wide Insights** | Aggregates data across all modules into dashboards: substitution success rates, batch repeat rates, top medicine pairs, seasonal patterns, and network transfer volumes. |
+
+---
+
+## 🏗️ System Architecture — Three Progressive Modules
+
+AYUVANT is built as **three interconnected modules**, each adding a layer of intelligence:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    AYUVANT ECOSYSTEM                        │
+│                                                             │
+│  ┌─────────────┐  ┌──────────────┐  ┌────────────────────┐ │
+│  │   PART 1    │  │    PART 2    │  │      PART 3        │ │
+│  │  Inventory  │──│  AI + Zones  │──│  Network + Patient │ │
+│  │  & Sales    │  │  & Predict   │  │  & Distribution    │ │
+│  └─────────────┘  └──────────────┘  └────────────────────┘ │
+│        │                 │                    │             │
+│        ▼                 ▼                    ▼             │
+│   Medicine DB      ML Forecasts      Transfer Routing      │
+│   Batch CRUD       Zone Heatmaps     Salt-Based Alts       │
+│   Stock Alerts     News Intel        Patient Timelines      │
+│   Sales Logger     AI Q&A Bot        Feedback Analytics     │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🚀 Architectural Modules & Deep-Dive Features
+## 📦 Part 1 — Core Pharmacy Platform
 
-### 📦 Part 1: Core Pharmacy Platform (The Foundation)
-The base operational layer for day-to-day pharmacy management:
-* **Medicine Database**: Cataloging brand names, generic formulations, active ingredient salts, expiry dates, batch codes, and supplier data.
-* **Inventory Dashboard & CRUD**: Standardized forms to add, edit, search, and delete medication stock.
-* **Stock & Expiry Monitor**: Proactive monitoring that tags batches as "near-expiry" or "low-stock" based on thresholds.
-* **Operational Logging**: Tracks sales transactions and incoming orders.
+> *The operational foundation — managing what's on the shelf today.*
 
-### 🧠 Part 2: AI Intelligence & Zone Map System
-Extends Part 1 data into predictive and geospatial analytics:
-* **Geospatial Zone Grid (2km × 2km)**:
-  * The physical map is segmented into discrete squares representing a localized zone.
-  * **Zone Coordinate Mapping Formula**:
-    $$\text{Zone}_x = \lfloor \frac{\text{Longitude}}{\text{Grid Size}} \rfloor, \quad \text{Zone}_y = \lfloor \frac{\text{Latitude}}{\text{Grid Size}} \rfloor$$
-  * Resolves any patient/purchaser GPS location into a zone identifier.
-  * **Surrounding Grid View**: Renders the central chemist zone and up to 10 surrounding grids, color-coded by demand intensity to assist with delivery routes.
-* **Local ML Demand Prediction**:
-  * An offline, lightweight model running in the browser using historical sales data.
-  * Recognizes demand peaks by **Month**, **Day of the week**, and **Zone**.
-  * **Self-Improving Loop**: Learns dynamically from every recorded sale to refine weekly and monthly forecasts.
-* **Outbreak News Intelligence**: Pulls simulated local news, Google Trends, and public health updates to trigger warning indicators if a specific disease surges in a zone.
-* **AI Q&A Chatbot**: A pharmacist console with preset questions:
-  1. *“Is there any medicine needed?”* -> Lists low stock and high-probability out-of-stock items.
-  2. *“Which zone around requires which medicine?”* -> Breaks down regional requirements.
-  3. *“What is the probability on when/after how many days a medicine is required?”* -> Estimates days remaining before stock exhaustion.
+### Features:
 
-### 🌐 Part 3: Smart Distribution & Patient Tracker (Intelligence Layer)
-Integrates multiple pharmacies into a collaborative network and tracks patient wellness:
-* **Inter-Pharmacy Stock Transfer**:
-  * Simulates a network of 6 neighboring pharmacies.
-  * **Transfer Recommendation Scoring Algorithm**: Ranks peer pharmacies based on a weighted index of surplus stock, distance, and local demand.
-  * **Transaction Lifecycle**: Renders and tracks requests through states: `Requested` ➔ `Approved` ➔ `In Transit` ➔ `Delivered`.
-* **Salt-Based Alternative Recommendation Engine**:
-  * Searches for generic alternatives if a brand-name drug is out of stock.
-  * **Therapeutic Matching Score**: Weighted at 50% Active Salt Match, 20% Category, 15% Dosage Form, and 15% Strength.
-  * **Price Indexing**: Shows if the substitute saves the patient money (MRP comparison).
-* **Pharmacist Feedback Loops & AI Insights**:
-  * A 6-question structured feedback system collects data after generic substitutions (efficacy rating, patient concerns, price sensitivity, pharmacist recommendation).
-  * Auto-aggregates feedback into charts and gauge metrics.
-* **Patient Health Tracker & Trajectory Detection**:
-  * Renders a vertical timeline of a patient's purchases by PAT-ID.
-  * **Wellness Trajectory Classification**: Tags patients as `Improving`, `Stable`, `Concerning`, or `Escalating`.
-  * **Health Flags**: Raises alert flags for escalation (e.g., patient buying Paracetamol for days, then transitioning to strong Antibiotics) or high-frequency purchases.
+**1. Medicine Batch Entry System**
+- Pharmacists enter: Batch Number, Medicine Name, Dosage Form (Tablet/Syrup/Inhaler/Cream/etc.), Dosage Strength, Quantity, Manufacturing Date, Expiry Date.
+- Medicine names auto-suggest from a master database of real Indian medicines with salt compositions.
+- Dosage strengths dynamically load based on the selected medicine type.
+
+**2. Inventory Dashboard**
+- Real-time stat cards: Total Batches, Total Units in Stock, Expiring Soon count.
+- Full-text search across medicine names and batch numbers.
+- Visual batch cards with color-coded expiry indicators (green = safe, yellow = expiring soon, red = expired).
+
+**3. Stock & Expiry Monitoring**
+- Automatically flags batches approaching expiry date.
+- Tracks low-stock conditions against configurable thresholds.
+- Persistent data — survives browser refresh via `localStorage`.
+
+**4. Module Switcher**
+- A unified navigation bar at the top lets pharmacists seamlessly switch between Part 1 (Inventory), Part 2 (AI Intelligence), and Part 3 (Smart Distribution).
 
 ---
 
-## 🎨 Design System & Visual Aesthetics
+## 🧠 Part 2 — AI Intelligence & Zone Map System
 
-AYUVANT is styled with the **AYUVANT Futuristic Dark** design system:
-* **Glassmorphism**: Translucent frosted panels with $20\%$ opacity background overlays, thin semi-transparent $1\text{px}$ outlines, and `backdrop-blur: 12px`.
-* **Futuristic Glows & Micro-Animations**:
-  * **Primary (Electric Cyan, `#00E5FF`)**: Glow outline for input focus, active tabs, and AI highlights.
-  * **Secondary (Vibrant Purple, `#7C4DFF`)**: For auxiliary actions, warning alerts, and secondary cards.
-  * **Tertiary (Neon Green, `#00E676`)**: For successful operations, normal stock, and approved transfers.
-* **Typography**: Sora (Headers), Inter (Body copy), and Space Grotesk (Labels, mono metrics, and status badges).
-* **Layouts**: Responsive, mobile-first cards and views utilizing smooth cubic-bezier CSS transitions.
+> *Predicting tomorrow's shortages using today's sales data.*
+
+### Features:
+
+**5. Medicine Sale Recording with Zone Tracking**
+- When a medicine is sold, the pharmacist records: Medicine Name, Batch Number, and the Buyer's Zone Number.
+- This zone-tagged sales data is the fuel for all predictions.
+
+**6. Geospatial Zone Grid System (2km × 2km)**
+- The geographic area around the pharmacy is divided into a grid of 2km × 2km squares.
+- Each square = one zone. The zone number is derived from GPS coordinates:
+  ```
+  zone_x = floor(longitude / grid_size)
+  zone_y = floor(latitude / grid_size)
+  zone_id = derived from average coordinates of that square
+  ```
+- The pharmacist's map view shows their central zone + up to 10 surrounding zones in 360°.
+- Zones are color-coded by demand intensity (red = high demand, green = low).
+
+**7. Local ML Demand Prediction Engine**
+- Runs **entirely offline in the browser** — no server, no cloud, no API calls.
+- Trained on the pharmacy's own historical sales data.
+- Learns patterns by:
+  - **Month** — which months have higher demand for which medicines.
+  - **Day of Week** — which weekdays see spikes.
+  - **Zone** — which geographic zones have recurring needs.
+- Generates **weekly and monthly forecasts**: "You will likely run out of Paracetamol in Zone 4 within 6 days."
+- **Self-improving**: Every new sale automatically refines the model. The more data, the sharper the predictions.
+
+**8. Outbreak News Intelligence**
+- Monitors simulated news feeds, Google Trends signals, and government health bulletins.
+- If a disease surge is detected (e.g., dengue outbreak in nearby zones), the system pushes proactive alerts to stock up on relevant medicines.
+
+**9. Smart Notification System**
+- Push-style notifications warning about:
+  - Upcoming demand spikes (from ML predictions).
+  - Which medicine, in which zone, by when.
+  - Actionable: "Fill supply of Azithromycin before Thursday."
+
+**10. AI Q&A Assistant (Pre-fixed Questions)**
+- Pharmacists select from intelligent preset questions:
+  - *"Is there any medicine needed?"* → Lists medicines running low or predicted to run out.
+  - *"Which zone around requires which medicine?"* → Zone-wise breakdown of demand.
+  - *"What is the probability — when and after how many days will a medicine be required?"* → Date/time predictions for specific medicines.
+- The AI responds with data-driven, quantified answers from the prediction model.
 
 ---
 
-## 💾 Local Storage Key Mapping
+## 🌐 Part 3 — Smart Distribution & Patient Intelligence
 
-The system operates completely client-side. The following keys are used in `localStorage`:
+> *Connecting pharmacies into a collaborative network and tracking patient wellness.*
 
-| Key Name | Module | Purpose |
-|----------|--------|---------|
-| `ayuvant_inventory` | Part 1 | Stores medicine database and current stock volumes |
-| `ayuvant_sales_history` | Part 1/2 | Tracks sold transactions with timestamps and zone coordinates |
-| `ayuvant_pharmacy_network` | Part 3 | Keeps track of neighboring pharmacies and their local inventories |
-| `ayuvant_transfers` | Part 3 | Records active and completed inter-pharmacy transfers |
-| `ayuvant_feedback` | Part 3 | Stores structured pharmacist post-substitution feedback |
-| `ayuvant_patients` | Part 3 | Tracks registered patient profiles and timeline events |
+This is a **6-tab dashboard** with the following capabilities:
+
+### Features:
+
+**11. Inter-Pharmacy Stock Transfer Network**
+- Simulates a network of 6 nearby pharmacies, each with their own stock levels, zone, distance, and coordinates.
+- **AI-Powered Transfer Scoring**: When a medicine is short, the system ranks nearby pharmacies by:
+  - Surplus stock available
+  - Physical distance
+  - Local demand score (weighted AI scoring)
+- **Full Transfer Lifecycle**: `Requested` → `Approved` → `In Transit` → `Delivered` — each step timestamped and tracked.
+- Pharmacists can search for a medicine and instantly see which neighbor has it in surplus.
+
+**12. Salt-Based Alternative Recommendation Engine**
+- When a specific brand is out of stock, the engine searches the entire medicine database for generics with matching active salt compositions.
+- **Therapeutic Match Score** (weighted algorithm):
+
+  | Factor | Weight |
+  |--------|--------|
+  | Active Salt Match | 50% |
+  | Medicine Category | 20% |
+  | Dosage Form | 15% |
+  | Strength Similarity | 15% |
+
+- **Price Comparison**: Shows whether the alternative is cheaper, same price, or more expensive than the original.
+- **Quick Sell**: A "Sell This" button lets the pharmacist immediately sell the substitute and triggers a feedback form.
+
+**13. Pharmacist Feedback Collection & AI Learning**
+- After every generic substitution, a structured 6-question feedback form is presented:
+
+  | # | Question | Input Type |
+  |---|----------|------------|
+  | 1 | Was the patient informed about the substitution? | Yes / No |
+  | 2 | Rate the alternative's effectiveness | 5-star rating |
+  | 3 | What concerned the patient? | Multi-select chips (Price, Brand trust, Side effects, etc.) |
+  | 4 | Would you recommend this substitute again? | 1–10 slider |
+  | 5 | Patient's price sensitivity | Single-select (Accepted / Hesitant / Refused) |
+  | 6 | Additional observations | Free text |
+
+- **AI Learning Loop**: All feedback is aggregated into insights — average satisfaction score, recommendation rate, top concern reasons with ranked bar charts. This data improves future alternative suggestions.
+
+**14. Patient Health Tracker**
+- **Registration**: Patients register via mobile number (with optional name, age, gender). Each gets a unique `PAT-XXXXX` ID.
+- **Purchase Timeline**: A vertical timeline showing every medicine purchase — medicine name, batch, quantity, date — creating a medical purchase history.
+- **Health Trajectory Classification**: Based on purchase patterns, each patient is classified as:
+  - 🟢 **Improving** — buying less medication over time, or shifting to milder medicines.
+  - 🔵 **Stable** — consistent, expected purchase patterns.
+  - 🟡 **Concerning** — increasing frequency or shifting categories.
+  - 🔴 **Escalating** — dangerous patterns like moving from painkillers to antibiotics to steroids.
+- **Health Flags**: Automatic alerts for:
+  - Frequent purchases of the same medicine (possible dependency or worsening condition).
+  - Category escalation (e.g., OTC → Rx → controlled substances).
+  - Multi-category purchases in short timeframes.
+
+**15. Pattern Analysis Dashboard**
+- **Batch Repeat Rate**: How often specific batches are re-purchased.
+- **Medicine Seasonality**: Which medicines spike in which months.
+- **Patient Trajectory Overview**: Aggregated view of all patient health trajectories with category filtering.
+
+**16. Network-Wide Insights Dashboard**
+- Aggregated statistics across all modules:
+  - Total substitutions made, success rate gauge (SVG-rendered).
+  - Top medicine pairs (original → substitute).
+  - Network transfer volumes and routes.
+  - Feedback sentiment analysis.
 
 ---
 
-## 🚀 How to Run & Verify
+## 🗄️ Master Dataset & Data Pipeline
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/HackIndiaXYZ/ai-agents-hackathon-2026-detox.git
-   cd ai-agents-hackathon-2026-detox
-   ```
+AYUVANT is powered by a **comprehensive pharmacy master dataset** (`pharmacy_master_dataset.json`) containing:
 
-2. **Run the Core Pharmacy Platform (Part 1)**:
-   * Open `part1/index.html` directly in any browser. Try adding a medicine batch.
+| Data Category | Contents |
+|---------------|----------|
+| **Diseases** | Disease names, ICD codes, categories |
+| **Symptoms** | Symptom names, severity levels, linked disease IDs |
+| **Medicines** | Brand names, types (Tablet/Syrup/Inhaler/etc.), OTC/Rx classification, linked disease IDs |
+| **Salt Compositions** | Active pharmaceutical ingredients with linked medicine IDs |
+| **Dosage Strengths** | Organized by dosage form type (Tablet, Syrup, Injection, etc.) with medicine ID mappings |
+| **Side Effects** | Effect descriptions, severity ratings, linked medicine IDs |
+| **Usage Guidelines** | Administration instructions by dosage form type |
+| **Suspicious Health Issues** | Flag patterns (e.g., "patient buying controlled substances frequently"), actions to take |
 
-3. **Run the AI forecasting and Zone Map dashboard (Part 2)**:
-   * Open `part2/index.html` in a browser. Try recording a sale with zone parameters and look at the demand map or ask the AI questions.
+### Data Compiler (`build/transform-dataset.js`)
 
-4. **Run the Distribution, Substitutes, and Patient Tracker (Part 3)**:
-   * Open `part3/index.html` in a browser. Navigate through the 6 tabs to test stock transfers, look up alternatives, register patient profiles, and view insights.
+A Node.js script that reads the master JSON dataset and generates two optimized JavaScript files for the browser:
+
+- **`clinical-intelligence.js`** — Diseases, symptoms, disease-medicine maps, side effects, dosage strengths, usage guidelines, suspicious health issues.
+- **`medicines.js`** — Full medicine catalog with parsed active salts, strengths, units, generic names, therapeutic classes, and pre-computed alternative medicine IDs.
 
 ---
 
-## 👥 Authors — Team DETOX
-Proudly built for **HackIndia 2026**:
-* **Anshul Prajapati** (anshulprajapati2220@gmail.com)
-* **Disha** (Disha19j@gmail.com)
+## 🎨 Design System — AYUVANT Futuristic Dark
+
+Every screen is built with a custom **futuristic dark theme** designed for extended pharmacist use:
+
+| Element | Design |
+|---------|--------|
+| **Background** | Deep dark (`#0E0E13`) with animated floating glow orbs and a subtle CSS grid pattern |
+| **Cards** | Glassmorphism — frosted glass panels with 20% opacity, 12px backdrop-blur, and 1px semi-transparent borders |
+| **Primary Accent** | Electric Cyan `#00E5FF` — used for active states, input focus glows, AI highlights |
+| **Secondary Accent** | Vibrant Purple `#7C4DFF` — secondary actions, warning states |
+| **Success Accent** | Neon Green `#00E676` — successful operations, healthy stock, approved transfers |
+| **Error** | Warm Red `#FF716C` — expired batches, critical alerts, escalation flags |
+| **Typography** | **Sora** (bold headers), **Inter** (body text), **Space Grotesk** (labels, metrics, monospace badges) |
+| **Buttons** | Gradient fills (Cyan → Purple) with outer glow on hover |
+| **Animations** | Smooth CSS transitions, pulse dots for live status, slide-up modals, auto-dismiss toasts |
+| **Layout** | Mobile-first responsive design with 12px border-radius on all components |
+
+---
+
+## 💾 How Data Is Stored
+
+AYUVANT runs **100% client-side** with no backend server required. All data persists in the browser's `localStorage`:
+
+| Storage Key | Module | What It Stores |
+|-------------|--------|----------------|
+| `ayuvant_inventory` | Part 1 | All medicine batches with quantities, dates, dosage info |
+| `ayuvant_sales_history` | Part 1 + 2 | Every sale record with medicine name, batch, zone, timestamp |
+| `ayuvant_pharmacy_network` | Part 3 | Simulated nearby pharmacy stock levels and metadata |
+| `ayuvant_transfers` | Part 3 | Active and completed inter-pharmacy transfer records |
+| `ayuvant_feedback` | Part 3 | All pharmacist feedback responses (pending + completed) |
+| `ayuvant_patients` | Part 3 | Patient profiles, purchase timelines, and health trajectories |
+
+---
+
+## 🚀 How to Run
+
+No installations, no dependencies, no server. Just a browser.
+
+### Step 1: Clone
+```bash
+git clone https://github.com/HackIndiaXYZ/ai-agents-hackathon-2026-detox.git
+cd ai-agents-hackathon-2026-detox
+```
+
+### Step 2: Open Any Module
+
+| Module | File to Open | What You'll See |
+|--------|-------------|-----------------|
+| **Part 1** — Inventory | `part1/index.html` | Dashboard with batch entry form. Add medicines, track stock, see expiry alerts. |
+| **Part 2** — AI Intelligence | `part2/index.html` | Zone maps, ML predictions, news intelligence, notification feed, AI Q&A console. |
+| **Part 3** — Distribution & Patients | `part3/index.html` | 6-tab dashboard: Transfers, Alternatives, Feedback, Patients, Patterns, Insights. |
+
+> **Tip**: Use the **module switcher** (⬡ AYUVANT dropdown) in the top-left corner of any module to navigate between Parts 1, 2, and 3 seamlessly.
+
+### Step 3: Try These Flows
+
+1. **Add a medicine batch** (Part 1) → **Sell it with a zone** (Part 2) → **Watch the ML model learn** (Part 2) → **Ask the AI when you'll run out** (Part 2).
+2. **Search for a medicine** (Part 3, Alternatives tab) → **See generic substitutes ranked by salt match** → **Sell a substitute** → **Fill the feedback form** → **See AI learning update**.
+3. **Register a patient** (Part 3, Patients tab) → **Record purchases** → **View their health timeline** → **Check if they're flagged as Escalating**.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | Pure HTML5, Vanilla JavaScript (ES6+), CSS3 |
+| **ML Engine** | Custom in-browser prediction model (no external libraries) |
+| **Data Layer** | Browser `localStorage` (fully offline, no server) |
+| **Dataset** | Relational JSON master dataset with Node.js compiler |
+| **Design** | Custom CSS design system with glassmorphism, neon glows, and micro-animations |
+| **Fonts** | Google Fonts (Sora, Inter, Space Grotesk) |
+| **Icons** | Material Icons Round |
+
+---
+
+## 📁 Repository Structure
+
+```
+ai-agents-hackathon-2026-detox/
+├── README.md                          ← You are here
+├── LICENSE                            ← MIT License
+├── pharmacy_master_dataset.json       ← Master relational dataset
+├── build/
+│   └── transform-dataset.js           ← Dataset → JS compiler
+├── context/                           ← Product specs & design docs
+│   ├── project-overview.md
+│   ├── design-system.md
+│   ├── part1-core-platform/
+│   │   ├── overview.md
+│   │   └── feature-batch-entry.md
+│   └── part2-ai-intelligence/
+│       ├── overview.md
+│       ├── feature-ai-qa.md
+│       ├── feature-notifications.md
+│       └── feature-zone-map.md
+├── part1/                             ← Core Pharmacy Platform
+│   ├── index.html
+│   ├── index.css
+│   └── app.js
+├── part2/                             ← AI Intelligence & Zone Maps
+│   ├── index.html
+│   ├── index.css
+│   └── app.js
+└── part3/                             ← Smart Distribution & Patients
+    ├── index.html
+    ├── index.css
+    ├── app.js
+    ├── data/
+    │   ├── clinical-intelligence.js
+    │   └── medicines.js
+    └── modules/
+        ├── pharmacy-network.js
+        ├── alternatives.js
+        ├── feedback.js
+        └── patient-tracker.js
+```
+
+---
+
+## 👥 Team DETOX
+
+Built with ❤️ for **HackIndia AI Agents Hackathon 2026**
+
+| Member | Contact |
+|--------|---------|
+| **Anshul Prajapati** | anshulprajapati2220@gmail.com |
+| **Disha** | Disha19j@gmail.com |
+
+---
+
+> *"The best time to stock a medicine is before anyone needs it."* — AYUVANT
+]]>
