@@ -1,111 +1,158 @@
 # 🏥 AYUVANT — AI-Powered Smart Pharmacy & Healthcare Supply Ecosystem
 
-Welcome to the official repository for team **DETOX** at **HackIndia AI Agents Hackathon 2026**. 
+Welcome to the official repository for team **DETOX** at the **HackIndia AI Agents Hackathon 2026**. 
 
-**AYUVANT** is an AI-powered smart pharmacy and healthcare supply ecosystem designed to solve the critical challenges of medicine distribution, stockouts, demand forecasting, and patient health tracking.
-
----
-
-## 🌟 Key Features
-
-### 📦 Part 1: Core Pharmacy Platform (Foundation)
-* **Complete Medicine Database**: Store details such as brand names, categories, batches, expiry dates, and supplier information.
-* **Inventory Management (CRUD)**: Create, read, update, delete, and search medicines efficiently.
-* **Purchase & Sales Records**: Detailed ledger of all financial and inventory transactions.
-* **Stock & Expiry Monitoring**: Smart alerts for low stock levels, overstocking, and near-expiry drugs.
-* **Owner Dashboard**: Core analytical overview for pharmacy owners.
-
-### 🧠 Part 2: AI Intelligence & Smart Supply Chain
-* **Zone-Wise Analytics**: Real-time demand tracking with visual heatmaps to identify regional health trends.
-* **AI Demand Prediction**: Machine learning algorithms forecasting demand based on historical sales.
-* **News-Based Intelligence**: Sentiment and outbreak detection from local news, Google Trends, and government updates.
-* **Smart Autonomous Ordering**: Auto-suggest and automatically compile orders matching predicted needs.
-* **Supplier Management**: Bid comparison, delivery tracking, and logistics optimization.
-
-### 🌐 Part 3: Smart Distribution & Patient Intelligence
-* **Inter-Pharmacy Stock Transfer**: Peer-to-peer stock transfers between neighboring pharmacies based on proximity and AI surplus ranking.
-* **Salt-Based Alternative Recommender**: Intelligent generic substitute matching using a weighted score of active salts, strength, dosage form, and price.
-* **Pharmacist Feedback Engine**: AI-assisted post-sale verification and feedback analysis to learn user behavior and substitute success rates.
-* **Patient Health Tracker**: Profile-based purchase history timelines, disease escalation alerts, and patient health trajectory forecasting.
-* **Network-Wide Insights**: Interactive dashboards for repeat rates, batch tracking, and seasonality.
+**AYUVANT** is an intelligent, autonomous healthcare logistics and pharmacy management system. By combining local machine learning forecasting, news sentiment tracking, geospatial demand mapping, and peer-to-peer distribution, AYUVANT minimizes medication stockouts and optimizes localized healthcare supply chains.
 
 ---
 
-## 📁 Repository Structure
+## 🔮 Project Vision & Core Challenge
+
+Traditional healthcare supply chains are reactive, leading to local medicine shortages (e.g., during seasonal disease outbreaks) or wasteful overstocking. 
+
+**AYUVANT** resolves this by introducing an **intelligent, agentic dashboard** for pharmacists and distributors that predicts demands before they occur, routes excess stock from nearby pharmacies, recommends therapeutically equivalent generic alternatives, and tracks individual patient recovery patterns.
+
+---
+
+## 📁 System Architecture & Directory Layout
 
 ```text
 ai-agents-hackathon-2026-detox/
-├── LICENSE
+├── LICENSE                        # Open-source MIT License
 ├── README.md                      # This main document
-├── pharmacy_master_dataset.json   # Seed dataset for pharmacy database
-├── build/                         # Automation & dataset transformers
-│   └── transform-dataset.js
-├── context/                       # In-depth product spec files
-│   ├── project-overview.md
-│   ├── design-system.md
-│   ├── part1-core-platform/
-│   └── part2-ai-intelligence/
-├── part1/                         # Part 1 Codebase (HTML, CSS, JS)
-│   ├── index.html
-│   ├── index.css
-│   └── app.js
-├── part2/                         # Part 2 Codebase (HTML, CSS, JS)
-│   ├── index.html
-│   ├── index.css
-│   └── app.js
-└── part3/                         # Part 3 Codebase (HTML, CSS, JS)
-    ├── index.html
-    ├── index.css
-    ├── app.js
-    ├── data/
+├── pharmacy_master_dataset.json   # Full relational dataset (diseases, symptoms, meds, salts)
+├── build/                         # Dataset automation & parsing scripts
+│   └── transform-dataset.js       # Node.js script mapping dataset to clinical JS databases
+├── context/                       # In-depth product specification and design specifications
+│   ├── project-overview.md        # Core vision and module maps
+│   ├── design-system.md           # Tokens, palettes, typography guidelines
+│   ├── part1-core-platform/       # Specifications for Part 1 features
+│   │   ├── overview.md
+│   │   └── feature-batch-entry.md
+│   └── part2-ai-intelligence/     # Specifications for Part 2 AI & map features
+│       ├── overview.md
+│       ├── feature-ai-qa.md
+│       ├── feature-notifications.md
+│       └── feature-zone-map.md
+├── part1/                         # Part 1 Codebase (Core operations foundation)
+│   ├── index.html                 # UI layout for inventory & day-to-day CRUD
+│   ├── index.css                  # UI theme & layout styling
+│   └── app.js                     # CRUD logic & basic dashboard wiring
+├── part2/                         # Part 2 Codebase (AI forecasting & zone map)
+│   ├── index.html                 # Grid maps, AI Q&A panel, notification feeds
+│   ├── index.css                  # Custom styling for grids & news feeds
+│   └── app.js                     # Local ML prediction loop, self-improving logs, Q&A answers
+└── part3/                         # Part 3 Codebase (Network transfers & patient intelligence)
+    ├── index.html                 # 6-tab dashboard: Transfers, Alts, Feedback, Patients, Patterns, Insights
+    ├── index.css                  # Full component layouts & dynamic render class states
+    ├── app.js                     # System orchestrator, tab switching, and event binding
+    ├── data/                      # Auto-generated clinical databases
+    │   ├── clinical-intelligence.js
     │   └── medicines.js
-    └── modules/
-        ├── pharmacy-network.js
-        ├── alternatives.js
-        ├── feedback.js
-        └── patient-tracker.js
+    └── modules/                   # Decoupled domain models
+        ├── pharmacy-network.js    # Stock transfer routing & proximity algorithms
+        ├── alternatives.js        # Salt composition matching & price comparison engine
+        ├── feedback.js            # Pharmacist feedback analytics and AI learning updates
+        └── patient-tracker.js     # Patient registration, purchase timeline, & health trajectory flags
 ```
 
 ---
 
-## 🛠️ Tech Stack & Design System
+## 🚀 Architectural Modules & Deep-Dive Features
 
-* **Frontend**: Pure HTML5, Vanilla JavaScript (ES6+), and CSS3. No framework dependencies for speed and deployment ease.
-* **Styling & Theme**: **AYUVANT Futuristic Dark** theme utilizing:
-  * Glassmorphism & backdrop-blur filters
-  * Neon Accent Colors:
-    * Primary: `#00E5FF` (Electric Cyan)
-    * Secondary: `#7C4DFF` (Vibrant Purple)
-    * Tertiary: `#00E676` (Neon Green)
-  * Custom Typography (Sora + Inter + Space Grotesk via Google Fonts)
-* **Data Layer**: Pure client-side persistence with `localStorage` (fully functional without a server).
+### 📦 Part 1: Core Pharmacy Platform (The Foundation)
+The base operational layer for day-to-day pharmacy management:
+* **Medicine Database**: Cataloging brand names, generic formulations, active ingredient salts, expiry dates, batch codes, and supplier data.
+* **Inventory Dashboard & CRUD**: Standardized forms to add, edit, search, and delete medication stock.
+* **Stock & Expiry Monitor**: Proactive monitoring that tags batches as "near-expiry" or "low-stock" based on thresholds.
+* **Operational Logging**: Tracks sales transactions and incoming orders.
+
+### 🧠 Part 2: AI Intelligence & Zone Map System
+Extends Part 1 data into predictive and geospatial analytics:
+* **Geospatial Zone Grid (2km × 2km)**:
+  * The physical map is segmented into discrete squares representing a localized zone.
+  * **Zone Coordinate Mapping Formula**:
+    $$\text{Zone}_x = \lfloor \frac{\text{Longitude}}{\text{Grid Size}} \rfloor, \quad \text{Zone}_y = \lfloor \frac{\text{Latitude}}{\text{Grid Size}} \rfloor$$
+  * Resolves any patient/purchaser GPS location into a zone identifier.
+  * **Surrounding Grid View**: Renders the central chemist zone and up to 10 surrounding grids, color-coded by demand intensity to assist with delivery routes.
+* **Local ML Demand Prediction**:
+  * An offline, lightweight model running in the browser using historical sales data.
+  * Recognizes demand peaks by **Month**, **Day of the week**, and **Zone**.
+  * **Self-Improving Loop**: Learns dynamically from every recorded sale to refine weekly and monthly forecasts.
+* **Outbreak News Intelligence**: Pulls simulated local news, Google Trends, and public health updates to trigger warning indicators if a specific disease surges in a zone.
+* **AI Q&A Chatbot**: A pharmacist console with preset questions:
+  1. *“Is there any medicine needed?”* -> Lists low stock and high-probability out-of-stock items.
+  2. *“Which zone around requires which medicine?”* -> Breaks down regional requirements.
+  3. *“What is the probability on when/after how many days a medicine is required?”* -> Estimates days remaining before stock exhaustion.
+
+### 🌐 Part 3: Smart Distribution & Patient Tracker (Intelligence Layer)
+Integrates multiple pharmacies into a collaborative network and tracks patient wellness:
+* **Inter-Pharmacy Stock Transfer**:
+  * Simulates a network of 6 neighboring pharmacies.
+  * **Transfer Recommendation Scoring Algorithm**: Ranks peer pharmacies based on a weighted index of surplus stock, distance, and local demand.
+  * **Transaction Lifecycle**: Renders and tracks requests through states: `Requested` ➔ `Approved` ➔ `In Transit` ➔ `Delivered`.
+* **Salt-Based Alternative Recommendation Engine**:
+  * Searches for generic alternatives if a brand-name drug is out of stock.
+  * **Therapeutic Matching Score**: Weighted at 50% Active Salt Match, 20% Category, 15% Dosage Form, and 15% Strength.
+  * **Price Indexing**: Shows if the substitute saves the patient money (MRP comparison).
+* **Pharmacist Feedback Loops & AI Insights**:
+  * A 6-question structured feedback system collects data after generic substitutions (efficacy rating, patient concerns, price sensitivity, pharmacist recommendation).
+  * Auto-aggregates feedback into charts and gauge metrics.
+* **Patient Health Tracker & Trajectory Detection**:
+  * Renders a vertical timeline of a patient's purchases by PAT-ID.
+  * **Wellness Trajectory Classification**: Tags patients as `Improving`, `Stable`, `Concerning`, or `Escalating`.
+  * **Health Flags**: Raises alert flags for escalation (e.g., patient buying Paracetamol for days, then transitioning to strong Antibiotics) or high-frequency purchases.
 
 ---
 
-## 🚀 Getting Started / How to Run
+## 🎨 Design System & Visual Aesthetics
 
-To run and test the application, clone the repository locally and open any of the parts in your web browser:
+AYUVANT is styled with the **AYUVANT Futuristic Dark** design system:
+* **Glassmorphism**: Translucent frosted panels with $20\%$ opacity background overlays, thin semi-transparent $1\text{px}$ outlines, and `backdrop-blur: 12px`.
+* **Futuristic Glows & Micro-Animations**:
+  * **Primary (Electric Cyan, `#00E5FF`)**: Glow outline for input focus, active tabs, and AI highlights.
+  * **Secondary (Vibrant Purple, `#7C4DFF`)**: For auxiliary actions, warning alerts, and secondary cards.
+  * **Tertiary (Neon Green, `#00E676`)**: For successful operations, normal stock, and approved transfers.
+* **Typography**: Sora (Headers), Inter (Body copy), and Space Grotesk (Labels, mono metrics, and status badges).
+* **Layouts**: Responsive, mobile-first cards and views utilizing smooth cubic-bezier CSS transitions.
 
-1. **Clone the repository**:
+---
+
+## 💾 Local Storage Key Mapping
+
+The system operates completely client-side. The following keys are used in `localStorage`:
+
+| Key Name | Module | Purpose |
+|----------|--------|---------|
+| `ayuvant_inventory` | Part 1 | Stores medicine database and current stock volumes |
+| `ayuvant_sales_history` | Part 1/2 | Tracks sold transactions with timestamps and zone coordinates |
+| `ayuvant_pharmacy_network` | Part 3 | Keeps track of neighboring pharmacies and their local inventories |
+| `ayuvant_transfers` | Part 3 | Records active and completed inter-pharmacy transfers |
+| `ayuvant_feedback` | Part 3 | Stores structured pharmacist post-substitution feedback |
+| `ayuvant_patients` | Part 3 | Tracks registered patient profiles and timeline events |
+
+---
+
+## 🚀 How to Run & Verify
+
+1. **Clone the Repository**:
    ```bash
    git clone https://github.com/HackIndiaXYZ/ai-agents-hackathon-2026-detox.git
    cd ai-agents-hackathon-2026-detox
    ```
 
-2. **Run Part 1 (Core Platform)**:
-   * Double-click `part1/index.html` or open it with your browser.
+2. **Run the Core Pharmacy Platform (Part 1)**:
+   * Open `part1/index.html` directly in any browser. Try adding a medicine batch.
 
-3. **Run Part 2 (AI Intelligence)**:
-   * Double-click `part2/index.html` or open it with your browser.
+3. **Run the AI forecasting and Zone Map dashboard (Part 2)**:
+   * Open `part2/index.html` in a browser. Try recording a sale with zone parameters and look at the demand map or ask the AI questions.
 
-4. **Run Part 3 (Smart Distribution & Patient Tracker)**:
-   * Double-click `part3/index.html` or open it with your browser.
-
-*Note: All three parts store their respective states in your browser's local storage (`localStorage`). To reset the simulated data at any time, clear your browser cache or run `localStorage.clear()` in the browser console.*
+4. **Run the Distribution, Substitutes, and Patient Tracker (Part 3)**:
+   * Open `part3/index.html` in a browser. Navigate through the 6 tabs to test stock transfers, look up alternatives, register patient profiles, and view insights.
 
 ---
 
-## 👥 The Team — DETOX
-Submitting for the HackIndia AI Agents Hackathon 2026.
-* **Anshul Prajapati**
-* **Disha**
+## 👥 Authors — Team DETOX
+Proudly built for **HackIndia 2026**:
+* **Anshul Prajapati** (anshulprajapati2220@gmail.com)
+* **Disha** (Disha19j@gmail.com)
