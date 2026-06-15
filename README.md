@@ -1,8 +1,16 @@
 # 🏥 AYUVANT — AI-Powered Smart Pharmacy & Healthcare Supply Ecosystem
 
-Welcome to the official repository for team **DETOX** at the **HackIndia AI Agents Hackathon 2026**. 
+Welcome to the official repository for team **DETOX** at the **HackIndia AI Agents Hackathon 2026**.
 
-**AYUVANT** is an intelligent, autonomous healthcare logistics and pharmacy management system. By combining local machine learning forecasting, news sentiment tracking, geospatial demand mapping, and peer-to-peer distribution, AYUVANT minimizes medication stockouts and optimizes localized healthcare supply chains.
+## 🚀 What is AYUVANT?
+**AYUVANT** is an AI-powered smart pharmacy and decentralized healthcare supply chain ecosystem. 
+
+## 🛠️ What Does It Do & What Have We Built?
+In this repository, we have built a **fully functional, interactive client-side dashboard system** divided into three progressive parts, backed by local data compilers:
+1. **Core Operations (Part 1)**: A day-to-day pharmacy inventory manager and sales logger.
+2. **AI & Geospatial Intelligence (Part 2)**: An offline, self-improving Machine Learning (ML) prediction model that forecasts medicine shortages locally in the browser, mapped to a 2km × 2km grid zone system, and an AI Q&A assistant.
+3. **P2P Distribution & Patient Tracker (Part 3)**: A collaborative network simulator that manages peer-to-peer stock transfers between nearby pharmacies, an active salt composition alternative recommender, a pharmacist feedback collector, and a profile-based patient timeline tracker with recovery trajectory alerts.
+4. **Master Dataset Compiler**: A Node.js compiler (`transform-dataset.js`) that takes a relational master pharmacy dataset and converts it into optimized Javascript clinical data layers to power the dashboard offline.
 
 ---
 
